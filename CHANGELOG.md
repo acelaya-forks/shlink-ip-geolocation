@@ -34,6 +34,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com), and this 
 
 ### Removed
 * Drop support for shlink-config 3.0
+* Remove deprecated `Location::emptyInstance()` method.
 
 ### Fixed
 * *Nothing*

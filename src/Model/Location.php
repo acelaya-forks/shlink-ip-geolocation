@@ -17,12 +17,6 @@ final readonly class Location
     ) {
     }
 
-    /** @deprecated Use self:.empty() instead */
-    public static function emptyInstance(): self
-    {
-        return self::empty();
-    }
-
     public static function empty(): self
     {
         return new self();
