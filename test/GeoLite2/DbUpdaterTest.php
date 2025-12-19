@@ -8,6 +8,7 @@ use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
+use PHPUnit\Framework\Attributes\AllowMockObjectsWithoutExpectations;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -26,6 +27,7 @@ use Throwable;
 
 use function sys_get_temp_dir;
 
+#[AllowMockObjectsWithoutExpectations]
 class DbUpdaterTest extends TestCase
 {
     private MockObject & ClientInterface $httpClient;
@@ -146,7 +148,7 @@ class DbUpdaterTest extends TestCase
     private function dbUpdater(bool $throwOnExtract = false, string|null $licenseKey = 'foobar'): DbUpdater
     {
         $options = new GeoLite2Options($licenseKey, 'db_location', tempDir: sys_get_temp_dir());
-        $fileExtractor = $this->createMock(FileExtractorInterface::class);
+        $fileExtractor = $this->createStub(FileExtractorInterface::class);
 
         if ($throwOnExtract) {
             $fileExtractor->method('extractFile')->willThrowException(ExtractException::forInvalidCompressedFile(''));
