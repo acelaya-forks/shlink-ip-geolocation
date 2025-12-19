@@ -15,7 +15,7 @@
         "php": "^8.4",
         "ext-zlib": "*",
         "fig/http-message-util": "^1.1",
-        "geoip2/geoip2": "^3.2",
+        "geoip2/geoip2": "^3.3",
         "guzzlehttp/guzzle": "^7.10",
         "shlinkio/shlink-config": "^4.0",
         "symfony/filesystem": "^8.0 || ^7.4"
@@ -24,8 +24,7 @@
         "devster/ubench": "^2.1",
         "phpstan/phpstan": "^2.1",
         "phpstan/phpstan-phpunit": "^2.0",
-        "phpunit/phpunit": "^12.4",
-        "roave/security-advisories": "dev-master",
+        "phpunit/phpunit": "^12.5",
         "shlinkio/php-coding-standard": "~2.5.0",
         "symfony/var-dumper": "^8.0"
     },
