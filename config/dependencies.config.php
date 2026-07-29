@@ -21,7 +21,7 @@ return [
             Resolver\ChainIpLocationResolver::class => ConfigAbstractFactory::class,
 
             GeoLite2\GeoLite2Options::class => static function (ContainerInterface $c): GeoLite2\GeoLite2Options {
-                /** @var array $config */
+                /** @var array{license_key?: string, db_location?: string, temp_dir?: string} $config */
                 $config = $c->get('config.geolite2');
                 return new GeoLite2\GeoLite2Options(
                     licenseKey: $config['license_key'] ?? null,

@@ -27,7 +27,7 @@ class MemoryEfficientFileExtractorTest extends TestCase
     public function exceptionIsThrownIfCompressedFileCannotBeOpened(): void
     {
         $this->expectException(ExtractException::class);
-        $this->expectExceptionMessage('It was not possible to open file "__invalid__"');
+        $this->expectExceptionMessageIs('It was not possible to open file "__invalid__"');
 
         $this->extractor->extractFile('__invalid__', '');
     }
@@ -36,7 +36,7 @@ class MemoryEfficientFileExtractorTest extends TestCase
     public function exceptionIsThrownIfDestinationDirDoesNotExist(): void
     {
         $this->expectException(ExtractException::class);
-        $this->expectExceptionMessage('It was not possible to open destination dir "__invalid__"');
+        $this->expectExceptionMessageIs('It was not possible to open destination dir "__invalid__"');
 
         $this->extractor->extractFile(self::COMPRESSED_FILE, self::FILE_TO_EXTRACT, '__invalid__');
     }
@@ -45,7 +45,7 @@ class MemoryEfficientFileExtractorTest extends TestCase
     public function exceptionIsThrownIfFileToExtractIsNotFoundInsideCompressedFile(): void
     {
         $this->expectException(ExtractException::class);
-        $this->expectExceptionMessage(
+        $this->expectExceptionMessageIs(
             sprintf('File "__invalid__" not found inside compressed file "%s"', self::COMPRESSED_FILE),
         );
 
