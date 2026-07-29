@@ -8,7 +8,7 @@ extends = "vendor/shlinkio/shlink-mago-config/mago.toml"
 [source]
 workspace = "."
 paths = ["config", "src", "test"]
-excludes = ["vendor"]
+includes = ["vendor"]
 
 [source.glob]
 literal-separator = true
@@ -18,3 +18,9 @@ no-error-control-operator = { exclude = ["src/File/MemoryEfficientFileExtractor.
 no-literal-password = { exclude = ["test"] }
 no-empty-catch-clause = { exclude = ["test", "src/GeoLite2/DbUpdater.php"] }
 no-empty-loop = { exclude = ["test"] }
+
+[analyzer]
+ignore = [
+    { code = "mixed-assignment", in = "test/" },
+    { code = "mixed-argument", in = "test/" },
+]

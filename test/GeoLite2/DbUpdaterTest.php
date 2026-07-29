@@ -51,7 +51,7 @@ class DbUpdaterTest extends TestCase
             ->willThrowException(new ClientException('', new Request('GET', ''), $this->response));
 
         $this->expectException(DbUpdateException::class);
-        $this->expectExceptionMessage(
+        $this->expectExceptionMessageIs(
             'An error occurred while trying to download a fresh copy of the GeoLite2 database',
         );
 
@@ -76,7 +76,9 @@ class DbUpdaterTest extends TestCase
         $prepareFs($this->filesystem);
 
         $this->expectException(DbUpdateException::class);
-        $this->expectExceptionMessage('An error occurred while trying to copy GeoLite2 db file to db_location folder');
+        $this->expectExceptionMessageIs(
+            'An error occurred while trying to copy GeoLite2 db file to db_location folder',
+        );
 
         $this->dbUpdater()->downloadFreshCopy();
     }
@@ -136,7 +138,7 @@ class DbUpdaterTest extends TestCase
     public function anExceptionIsThrownIfNoLicenseKeyIsProvided(string|null $license): void
     {
         $this->expectException(MissingLicenseException::class);
-        $this->expectExceptionMessage('Impossible to download GeoLite2 db file. A license key was not provided.');
+        $this->expectExceptionMessageIs('Impossible to download GeoLite2 db file. A license key was not provided.');
 
         $this->dbUpdater(licenseKey: $license)->downloadFreshCopy();
     }
